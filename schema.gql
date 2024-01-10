@@ -1,0 +1,23 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Todo {
+  id: ID!
+  name: String!
+  complete: Boolean!
+}
+
+type Query {
+  findOne(id: Int!): Todo!
+  findAll: [Todo!]!
+}
+
+type Mutation {
+  createTodo(createTodoInput: CreateTodoInput!): Todo!
+  updateTodo(id: ID!, name: String!, complete: Boolean!): [Todo!]!
+}
+
+input CreateTodoInput {
+  name: String!
+}

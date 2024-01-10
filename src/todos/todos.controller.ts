@@ -17,7 +17,7 @@ export class TodosController {
 
   @Post()
   async create(@Body() createTodoDto: CreateTodoDto) {
-    this.todosService.create(createTodoDto);
+    return this.todosService.create(createTodoDto);
   }
 
   @Get()
@@ -26,19 +26,18 @@ export class TodosController {
   }
 
   @Get(':id')
-  findOne(@Param() params: any): string {
-    console.log(params.id);
-    return `This action returns a #${params.id} todo`;
+  findOne(@Param() params: any): Todo {
+    return this.todosService.findById(params.id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: CreateTodoDto) {
-    return `This action updates a #${id} todo`;
+  update(@Param('id') id: number, @Body() updateTodoDto: CreateTodoDto) {
+    return this.todosService.update(id, updateTodoDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return `This action removes a #${id} todo`;
+  remove(@Param('id') id: number) {
+    return this.todosService.remove(id);
   }
 
   /*  Note that when you inject either @Res() or @Response() in a method handler, you put Nest into Library-specific mode for 
